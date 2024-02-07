@@ -88,3 +88,125 @@
     /jenkins         # Jenkins CI/CD 파이프라인 구성
 
 ```
+
+
+## 설치 및 사용법
+
+### 이 저장소를 클론합니다.
+   ```bash
+   git clone https://github.com/dongkoony/aws_3_tier.git
+   cd aws_3_tier
+   ```
+
+### Version
+  ```bash
+  Terraform > v1.7.1
+  aws-cli > 2.15.14
+  ```
+
+### AWS Configuration
+  ``` bash
+  // AWS Access Key, Secret Key 구성
+  aws configure
+  
+  // 설정 AWS IAM 액세스 key
+  AWS Access Key ID [None] :
+  AWS Secret Access Key [None] :
+  Default region name [None] : ap-northeast-2(서울)
+  Default output format [None] : json
+  
+  // 등록 확인
+  aws configure list
+  
+  // 여러 AWS 계정과 아이디로 운용할 경우
+  aws configure --profile [원하는 이름]
+  ```
+
+### Terraform install (Ubuntu)
+  ``` bash
+  wget -O- https://apt.releases.hashicorp.com/gpg | sudo gpg --dearmor -o /usr/share/keyrings/hashicorp-archive-keyring.gpg
+  echo "deb [signed-by=/usr/share/keyrings/hashicorp-archive-keyring.gpg] https://apt.releases.hashicorp.com $(lsb_release -cs) main" | sudo tee /etc/apt/sources.list.d/hashicorp.list
+  sudo apt update && sudo apt install terraform
+
+  $ terraform version
+  ```
+### Terraform install (Windows)
+  ``` bash
+  https://developer.hashicorp.com/terraform/install?product_intent=terraform
+  다운로드 후 시스템 환경 변수 등록.
+
+  >> terraform version
+  ```
+
+### Terraform Apply(실행)
+  ``` bash
+  // AWS 서비스 실행
+  >> terraform init
+
+  >> terraform apply 또는 terraform apply --auto-approve
+  ****--auto-approve 옵션 넣을 시 "Enter a value: yes" 없이 다이렉트로 진행****
+
+  Do you want to perform these actions?
+    Terraform will perform the actions described above.
+    Only 'yes' will be accepted to approve.
+  
+    Enter a value: yes
+  
+  aws_db_parameter_group.three_rds_parameter: Creating...
+  aws_eip.three_tier_eip: Creating...
+  aws_vpc.three_tier_vpc: Creating...
+  aws_eip.three_tier_eip: Creation complete after 1s [id=eipalloc-04760dac1a7b62f52]
+  aws_vpc.three_tier_vpc: Creation complete after 1s [id=vpc-046c4f6e1ad75ed38]
+  aws_internet_gateway.three_tier_GateWay: Creating...
+  .
+  .
+  .
+  .
+  aws_db_instance.three_rds: Still creating... [6m20s elapsed]
+  aws_db_instance.three_rds: Still creating... [6m30s elapsed]
+  aws_db_instance.three_rds: Creation complete after 6m40s [id=db-YX5ZZ4MD3A2EZRFAADEOADYXQ4]
+  
+  Apply complete! Resources: 28 added, 0 changed, 0 destroyed.
+  
+  Outputs: (Example)
+  
+  was_instance_id = "i-07f5xxxxxxxxxxx865"
+  was_instance_private_ip = "10.0.x.xx"
+  web_instance_eip = "43.xxx.xxx.187"
+  web_instance_id = "i-0cxxxxxxxxx7e9"
+  ```
+
+### Terraform Destroy(리소스 삭제)
+  ```bash
+  // AWS 서비스(리소스) 삭제
+  >> terraform destroy / terraform destroy --auto-approve
+  ****--auto-approve 옵션 넣을 시 "Enter a value: yes" 없이 다이렉트로 진행****
+
+  Do you really want to destroy all resources?
+    Terraform will destroy all your managed infrastructure, as shown above.
+    There is no undo. Only 'yes' will be accepted to confirm.
+  
+    Enter a value: yes
+  
+  aws_route_table_association.pub_c_assoc: Destroying... [id=rtbassoc-087353458dd2bc1a9]
+  aws_eip.web_eip: Destroying... [id=eipalloc-0d04626ea6333192f]
+  aws_route_table_association.rds_a_assoc: Destroying... [id=rtbassoc-001e0bfde6a2a3972]
+  aws_route_table_association.pub_sub_route: Destroying... [id=rtbassoc-07a47f1377c73f216]
+  aws_route_table_association.rds_c_assoc: Destroying... [id=rtbassoc-02f2c344589cd535e]
+  aws_route_table_association.pri_c_assoc: Destroying... [id=rtbassoc-093e6caeee3c3d9c6]
+  .
+  .
+  .
+  .
+  aws_subnet.Pri_subnet_A: Destruction complete after 0s
+  aws_vpc.three_tier_vpc: Destroying... [id=vpc-046c4f6e1ad75ed38]
+  aws_vpc.three_tier_vpc: Destruction complete after 1s
+  
+  Destroy complete! Resources: 28 destroyed.
+  ```
+
+### AWS 서비스(리소스) 삭제 확인
+  ```bash
+  EC2, EIP, RDS, VPC 등등 삭제 여부 확인
+  ```
+
