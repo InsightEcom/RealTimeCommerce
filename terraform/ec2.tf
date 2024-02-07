@@ -16,6 +16,6 @@ resource "aws_instance" "ubuntu_instance" {
     }
 
     tags = {
-    Name = "App_Server"
+    Name = "App_Server zz 장난질"
     }
 }
