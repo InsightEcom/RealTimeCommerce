@@ -17,6 +17,16 @@ resource "aws_security_group" "ec2_security_group" {
         cidr_blocks = ["0.0.0.0/0"]
     }
 
+
+    # jenkins Port
+    ingress {
+        from_port   = 8080
+        to_port     = 8080
+        protocol    = "tcp"
+        cidr_blocks = ["0.0.0.0/0"]
+    }
+    
+    
     #http Port
     ingress {
         from_port   = 80
