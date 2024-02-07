@@ -210,3 +210,25 @@
   EC2, EIP, RDS, VPC 등등 삭제 여부 확인
   ```
 
+## Jenkins Container Password 및 접속 방법
+``` bash
+// 컨테이너로 젠킨스를 Pull을 했기 때문에 초기 비밀번호 확인법은 조금 다르다.
+// Container NAMES Checking
+
+$ sudo docker ps -a
+
+// 비밀번호 확인
+
+$ sudo docker logs [Container NAMES]
+...
+Jenkins initial setup is required. An admin user has been created and a password generated.
+Please use the following password to proceed to installation:
+
+a768ea935............ [초기 비밀번호]
+
+This may also be found at: /var/jenkins_home/secrets/initialAdminPassword
+...
+
+// 젠킨스 서버 접속
+[EC2 Public IP:8080]
+```
