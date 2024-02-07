@@ -40,8 +40,6 @@ resource "aws_db_instance" "three_rds" {
     backup_retention_period = 7 #데이터 백업 보존 기간 "7일"
 
     tags = {
-        Name = "db_three-rds"
+        Name = "rct_db_rds"
     }
-
-    depends_on = [ aws_db_parameter_group.three_rds_parameter ] # 생성 순서 지정(파라미터 그룹 생성 먼저)
 }

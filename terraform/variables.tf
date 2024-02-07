@@ -97,6 +97,12 @@ variable "region" {
     default     = "ap-northeast-2"
 }
 
+variable "availability_zones" {
+    description = "가용 영역"
+    type        = list(string)
+    default     = ["ap-northeast-2a", "ap-northeast-2c"]
+}
+
 variable "vpc_cidr" {
     description = "The CIDR block for the VPC"
     type        = string
@@ -104,19 +110,29 @@ variable "vpc_cidr" {
 }
 
 variable "public_subnets" {
-    description = "CIDR blocks for the public subnets"
-    type        = map(string)
+    description = "CIDR blocks and availability zones for the public subnets"
+    type = map(object({
+    cidr_block        = string
+    availability_zone = string
+    }))
 }
 
 variable "private_subnets" {
-    description = "CIDR blocks for the private subnets"
-    type        = map(string)
+    description = "CIDR blocks and availability zones for the private subnets"
+    type = map(object({
+    cidr_block        = string
+    availability_zone = string
+    }))
 }
 
 variable "rds_subnets" {
-    description = "CIDR blocks for the RDS subnets"
-    type        = map(string)
+    description = "CIDR blocks and availability zones for the RDS subnets"
+    type = map(object({
+    cidr_block        = string
+    availability_zone = string
+    }))
 }
+
 
 
 ### RDS ID, Password 변수 ###
