@@ -90,12 +90,12 @@
 ```
 
 
-## 설치 및 사용법
+## Terraform 설치 및 사용법
 
 ### 이 저장소를 클론합니다.
    ```bash
-   git clone https://github.com/dongkoony/aws_3_tier.git
-   cd aws_3_tier
+   git clone https://github.com/InsightEcom/RealTimeCommerce.git
+   cd RealTimeCommerce
    ```
 
 ### Version
