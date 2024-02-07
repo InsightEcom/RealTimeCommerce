@@ -1,0 +1,3 @@
+terraform {
+  # is good
+}
