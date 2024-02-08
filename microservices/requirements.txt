@@ -1,0 +1,6 @@
+fastapi==0.65.2
+uvicorn==0.14.0
+pydantic==1.8.2
+SQLAlchemy<1.4
+databases==0.4.3
+alembic==1.6.5
