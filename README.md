@@ -89,6 +89,36 @@
 
 ```
 
+## Python 구조
+```bash
+microservices/
+│
+├── app/                    # 애플리케이션 코드를 포함하는 메인 디렉토리
+│   ├── __init__.py         # Python 패키지 초기화 파일
+│   ├── main.py             # FastAPI 애플리케이션 인스턴스와 라우팅을 포함하는 파일
+│   ├── dependencies.py     # 종속성을 관리하는 파일 (예: 데이터베이스 세션)
+│   ├── models.py           # 데이터베이스 모델(Schema)을 정의하는 파일
+│   ├── schemas.py          # Pydantic 모델을 정의하는 파일 (요청 및 응답 스키마)
+│   ├── crud.py             # 데이터베이스 CRUD 연산을 위한 함수를 정의하는 파일
+│   ├── database.py         # 데이터베이스 세션 및 엔진 설정을 포함하는 파일
+│   └── routers/            # 각각의 엔드포인트 그룹을 위한 라우터 모듈을 포함하는 디렉토리
+│       ├── __init__.py
+│       ├── items.py
+│       └── users.py
+│
+├── alembic/                # 데이터베이스 마이그레이션을 위한 Alembic 구성과 마이그레이션 파일
+│   └── ...
+│
+├── tests/                  # 테스트 코드를 포함하는 디렉토리
+│   ├── __init__.py
+│   ├── test_main.py
+│   └── ...
+│
+├── requirements.txt        # 프로젝트 종속성 목록
+├── .env                    # 환경 변수 설정 파일
+└── README.md               # 프로젝트 설명 및 사용 방법을 기술하는 파일
+
+```
 
 ## Terraform 설치 및 사용법
 
