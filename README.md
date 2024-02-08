@@ -122,14 +122,14 @@ microservices/
 
 ## Python 종속성 pip 설치
 ```bash
-# Python 가상 환경 생성
+# Python 가상 환경 생성 (선택사항)
 $ python -m venv venv
 
-# 가상 환경 활성화
+# 가상 환경 활성화 (선택사항)
 # Windows
 $ venv\Scripts\activate
 
-# macOS/Linux
+# macOS/Linux (선택사항)
 $ source venv/bin/activate
 
 # 의존성 설치
