@@ -1,9 +1,16 @@
 # Real Time Commerce(RTC) AWS Cloud 기반 실시간 e-커머스 분석 대시보드
 
 ## Project Overview
-**Real Time Commerce(RTC)**는 실시간으로 e-커머스 거래 데이터를 처리하고 분석하여, 비즈니스 성능 지표를 추적하는 클라우드 기반 마이크로서비스 애플리케이션입니다. 
+**Real Time Commerce(RTC)** 는 실시간으로 e-커머스 거래 데이터를 처리하고 분석하여, 비즈니스 성능 지표를 추적하는 클라우드 기반 마이크로서비스 애플리케이션입니다. 
 
-이 대시보드는 판매 추세, 고객 행동, 재고 수준 등의 중요한 비즈니스 인사이트를 제공하여, e-커머스 사업의 데이터 기반 결정을 지원합니다.
+- **클라우드 인프라:** AWS를 사용하여 EC2 인스턴스, VPC, Subnets, Security Groups 등의 리소스를 구성하고, Terraform을 사용하여 인프라를 코드로 관리합니다.
+- **마이크로서비스 아키텍처:** Python과 FastAPI로 구성된 마이크로서비스를 Docker 컨테이너로 배포하고, Kubernetes를 사용하여 오케스트레이션합니다.
+- **모니터링 및 로깅:** Prometheus로 애플리케이션 및 인프라의 성능 모니터링을 구축하고, Grafana로 시각화하여 대시보드를 제공합니다.
+- **CI/CD 파이프라인:** Jenkins를 활용하여 코드 변경 시 자동으로 빌드 및 배포되는 지속적 통합 및 배포 파이프라인을 구성합니다.
+
+이 프로젝트는 **클라우드 리소스 관리**, **마이크로서비스 아키텍처 설계**, **DevOps** 및 **MLOps** 관행 적용 등 다양한 기술 영역을 포괄합니다.
+
+또한, **데이터 처리 및 분석**, **실시간 모니터링**, **대시보드 제공**을 통해 비즈니스 가치를 창출하는 것을 목표로 합니다.
 
 
 ## Project Architecture Overview
@@ -133,6 +140,7 @@ $ venv\Scripts\activate
 $ source venv/bin/activate
 
 # 의존성 설치
+$ pip install --upgrade pip
 $ pip install -r requirements.txt
 ```
 
