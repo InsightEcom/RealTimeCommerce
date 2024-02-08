@@ -1,9 +1,16 @@
 # Real Time Commerce(RTC) AWS Cloud 기반 실시간 e-커머스 분석 대시보드
 
 ## Project Overview
-**Real Time Commerce(RTC)**는 실시간으로 e-커머스 거래 데이터를 처리하고 분석하여, 비즈니스 성능 지표를 추적하는 클라우드 기반 마이크로서비스 애플리케이션입니다. 
+**Real Time Commerce(RTC)** 는 실시간으로 e-커머스 거래 데이터를 처리하고 분석하여, 비즈니스 성능 지표를 추적하는 클라우드 기반 마이크로서비스 애플리케이션입니다. 
 
-이 대시보드는 판매 추세, 고객 행동, 재고 수준 등의 중요한 비즈니스 인사이트를 제공하여, e-커머스 사업의 데이터 기반 결정을 지원합니다.
+- **클라우드 인프라:** AWS를 사용하여 EC2 인스턴스, VPC, Subnets, Security Groups 등의 리소스를 구성하고, Terraform을 사용하여 인프라를 코드로 관리합니다.
+- **마이크로서비스 아키텍처:** Python과 FastAPI로 구성된 마이크로서비스를 Docker 컨테이너로 배포하고, Kubernetes를 사용하여 오케스트레이션합니다.
+- **모니터링 및 로깅:** Prometheus로 애플리케이션 및 인프라의 성능 모니터링을 구축하고, Grafana로 시각화하여 대시보드를 제공합니다.
+- **CI/CD 파이프라인:** Jenkins를 활용하여 코드 변경 시 자동으로 빌드 및 배포되는 지속적 통합 및 배포 파이프라인을 구성합니다.
+
+이 프로젝트는 **클라우드 리소스 관리**, **마이크로서비스 아키텍처 설계**, **DevOps** 및 **MLOps** 관행 적용 등 다양한 기술 영역을 포괄합니다.
+
+또한, **데이터 처리 및 분석**, **실시간 모니터링**, **대시보드 제공**을 통해 비즈니스 가치를 창출하는 것을 목표로 합니다.
 
 
 ## Project Architecture Overview
@@ -89,6 +96,53 @@
 
 ```
 
+## Python 구조
+```bash
+microservices/
+│
+├── app/                    # 애플리케이션 코드를 포함하는 메인 디렉토리
+│   ├── __init__.py         # Python 패키지 초기화 파일
+│   ├── main.py             # FastAPI 애플리케이션 인스턴스와 라우팅을 포함하는 파일
+│   ├── dependencies.py     # 종속성을 관리하는 파일 (예: 데이터베이스 세션)
+│   ├── models.py           # 데이터베이스 모델(Schema)을 정의하는 파일
+│   ├── schemas.py          # Pydantic 모델을 정의하는 파일 (요청 및 응답 스키마)
+│   ├── crud.py             # 데이터베이스 CRUD 연산을 위한 함수를 정의하는 파일
+│   ├── database.py         # 데이터베이스 세션 및 엔진 설정을 포함하는 파일
+│   └── routers/            # 각각의 엔드포인트 그룹을 위한 라우터 모듈을 포함하는 디렉토리
+│       ├── __init__.py
+│       ├── items.py
+│       └── users.py
+│
+├── alembic/                # 데이터베이스 마이그레이션을 위한 Alembic 구성과 마이그레이션 파일
+│   └── ...
+│
+├── tests/                  # 테스트 코드를 포함하는 디렉토리
+│   ├── __init__.py
+│   ├── test_main.py
+│   └── ...
+│
+├── requirements.txt        # 프로젝트 종속성 목록
+├── .env                    # 환경 변수 설정 파일
+└── README.md               # 프로젝트 설명 및 사용 방법을 기술하는 파일
+
+```
+
+## Python 종속성 pip 설치
+```bash
+# Python 가상 환경 생성 (선택사항)
+$ python -m venv venv
+
+# 가상 환경 활성화 (선택사항)
+# Windows
+$ venv\Scripts\activate
+
+# macOS/Linux (선택사항)
+$ source venv/bin/activate
+
+# 의존성 설치
+$ pip install --upgrade pip
+$ pip install -r requirements.txt
+```
 
 ## Terraform 설치 및 사용법
 
