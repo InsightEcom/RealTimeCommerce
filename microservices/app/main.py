@@ -28,3 +28,17 @@ def create_transaction(transaction: schemas.TransactionCreate, db: Session = Dep
 def read_transactions(skip: int = 0, limit: int = 100, db: Session = Depends(get_db)):
     transactions = crud.get_transactions(db, skip=skip, limit=limit)
     return transactions
+
+@app.get("/transactions/category/{category}", response_model=list[schemas.Transaction])
+def read_transactions_by_category(category: str, skip: int = 0, limit: int = 100, db: Session = Depends(get_db)):
+    transactions = crud.get_transactions_by_category(db, category=category, skip=skip, limit=limit)
+    return transactions
+
+@app.get("/analytics/monthly-total")
+def get_monthly_total(db: Session = Depends(get_db)):
+    # 분석 로직 구현
+    # 예시: 각 월별 거래 총액을 계산
+    # 실제 구현 시 데이터베이스에서 월별 총액을 집계하는 쿼리를 작성해야 합니다.
+    # 여기서는 반환 값이 가상의 데이터라고 가정합니다.
+    monthly_totals = {"January": 10000, "February": 15000, "March": 20000}
+    return monthly_totals
