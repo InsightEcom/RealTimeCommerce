@@ -16,6 +16,11 @@ def get_db():
     finally:
         db.close()
 
+## Hello world 출력 완료
+@app.get("/")
+def read_root():
+    return {"message": "Hello World"}
+
 @app.post("/transactions/", response_model=schemas.Transaction)
 def create_transaction(transaction: schemas.TransactionCreate, db: Session = Depends(get_db)):
     return crud.create_transaction(db=db, transaction=transaction)
