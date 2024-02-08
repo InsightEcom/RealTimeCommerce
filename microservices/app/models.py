@@ -1,21 +1,12 @@
-# models.py
-from sqlalchemy import create_engine, Column, Integer, String, Float
-from sqlalchemy.ext.declarative import declarative_base
-from sqlalchemy.orm import sessionmaker
-
-SQLALCHEMY_DATABASE_URL = "sqlite:///./test.db"
-
-engine = create_engine(
-    SQLALCHEMY_DATABASE_URL, connect_args={"check_same_thread": False}
-)
-SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
-
-Base = declarative_base()
+from sqlalchemy import Column, Integer, Float, String, DateTime
+from datetime import datetime
+from .database import Base
 
 class Transaction(Base):
     __tablename__ = "transactions"
-
-    id = Column(Integer, primary_key=True, index=True)
-    date = Column(String, index=True)
-    amount = Column(Float)
-    description = Column(String)
+    
+    id = Column(Integer, primary_key=True, index=True)  # 고유 ID
+    date = Column(DateTime, default=datetime.utcnow)  # 거래 일시
+    amount = Column(Float)  # 거래 금액
+    description = Column(String)  # 거래 설명
+    category = Column(String)  # 거래 카테고리

@@ -1,19 +1,17 @@
 from pydantic import BaseModel
-from typing import Optional
 from datetime import datetime
 
-# 거래 생성 요청 스키마
-class TransactionCreate(BaseModel):
-    date: datetime
-    amount: float
-    description: Optional[str] = None
+class TransactionBase(BaseModel):
+    amount: float  # 거래 금액
+    description: str  # 거래 설명
+    category: str  # 거래 카테고리
 
-# 거래 읽기 응답 스키마
-class Transaction(BaseModel):
-    id: int
-    date: datetime
-    amount: float
-    description: Optional[str] = None
+class TransactionCreate(TransactionBase):
+    pass
+
+class Transaction(TransactionBase):
+    id: int  # 고유 ID
+    date: datetime  # 거래 일시
 
     class Config:
         orm_mode = True
