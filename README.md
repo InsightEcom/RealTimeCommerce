@@ -120,6 +120,22 @@ microservices/
 
 ```
 
+## Python 종속성 pip 설치
+```bash
+# Python 가상 환경 생성
+$ python -m venv venv
+
+# 가상 환경 활성화
+# Windows
+$ venv\Scripts\activate
+
+# macOS/Linux
+$ source venv/bin/activate
+
+# 의존성 설치
+$ pip install -r requirements.txt
+```
+
 ## Terraform 설치 및 사용법
 
 ### 이 저장소를 클론합니다.
