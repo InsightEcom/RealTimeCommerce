@@ -1,25 +1,24 @@
-# main.py
 from fastapi import FastAPI, Depends, HTTPException
 from sqlalchemy.orm import Session
-from . import crud, models, schemas
-from .database import SessionLocal, engine
-
-models.Base.metadata.create_all(bind=engine)
+from . import crud, models, schemas, database
 
 app = FastAPI()
 
-# Dependency
+# 데이터베이스 세션 의존성
 def get_db():
-    db = SessionLocal()
+    db = database.SessionLocal()
     try:
         yield db
     finally:
         db.close()
 
-## Hello world 출력 완료
 @app.get("/")
 def read_root():
-    return {"message": "Hello World"}
+    return {
+        "message": "RealTimeCommerce API에 오신 것을 환영합니다!",
+        "description": "이 API는 전자상거래 거래 데이터를 실시간으로 처리하고 분석합니다.",
+        "instructions": "엔드포인트를 사용하여 거래 데이터와 상호작용하고 비즈니스 성능 지표를 추적하세요."
+    }
 
 @app.post("/transactions/", response_model=schemas.Transaction)
 def create_transaction(transaction: schemas.TransactionCreate, db: Session = Depends(get_db)):
