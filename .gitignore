@@ -212,3 +212,4 @@ terraform.rc
 # End of https://www.toptal.com/developers/gitignore/api/terraform,python
 terraform/.terraform.lock.hcl
 microservices/test.db
+frod_23797_The_name_of_our_GitHub_organization_is_InsightEcom.png
