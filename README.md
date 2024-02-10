@@ -146,7 +146,9 @@ $ pip install -r requirements.txt
 
 ## FastAPI 실행
 ```bash
-uvicorn main:app --reload
+C:\RealTimeCommerce\microservices
+
+uvicorn app.main:app --reload
 ```
 
 ## Terraform 설치 및 사용법
