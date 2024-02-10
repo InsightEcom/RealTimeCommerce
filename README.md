@@ -148,7 +148,7 @@ $ pip install -r requirements.txt
 ```bash
 C:\RealTimeCommerce\microservices
 
-uvicorn app.main:app --reload
+$ uvicorn app.main:app --reload
 ```
 
 ## Terraform 설치 및 사용법
