@@ -7,10 +7,10 @@ from dotenv import load_dotenv
 # .env 파일에서 환경 변수 로드
 load_dotenv()
 
-# RDS MySQL 연결 정보 업데이트
+# Local WSL(Ubuntu22.04 Docker cantainer MySQL 8.0) MySQL 연결 정보 업데이트
 DATABASE_URL = os.getenv("DATABASE_URL")
 
-engine = create_engine(DATABASE_URL, echo=True)  # future=True 제거
+engine = create_engine(DATABASE_URL, echo=True)
 SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
 
 Base = declarative_base()
