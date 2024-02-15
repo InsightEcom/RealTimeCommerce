@@ -4,7 +4,7 @@
 **Real Time Commerce(RTC)** 는 실시간으로 e-커머스 거래 데이터를 처리하고 분석하여, 비즈니스 성능 지표를 추적하는 클라우드 기반 마이크로서비스 애플리케이션입니다. 
 
 - **클라우드 인프라:** AWS를 사용하여 EC2 인스턴스, VPC, Subnets, Security Groups 등의 리소스를 구성하고, Terraform을 사용하여 인프라를 코드로 관리합니다.
-- **마이크로서비스 아키텍처:** Python과 FastAPI로 구성된 마이크로서비스를 Docker 컨테이너로 배포하고, Kubernetes를 사용하여 오케스트레이션합니다.
+- **마이크로서비스 아키텍처:** Python과 FastAPI로 구성된 마이크로서비스를 Docker 컨테이너로 배포하고, Docker-Compose.yaml 사용하여 MySQL 8.0 구성, Kubernetes를 사용하여 오케스트레이션합니다.
 - **모니터링 및 로깅:** Prometheus로 애플리케이션 및 인프라의 성능 모니터링을 구축하고, Grafana로 시각화하여 대시보드를 제공합니다.
 - **CI/CD 파이프라인:** Jenkins를 활용하여 코드 변경 시 자동으로 빌드 및 배포되는 지속적 통합 및 배포 파이프라인을 구성합니다.
 
@@ -19,7 +19,6 @@
    - **Virtual Private Cloud(VPC):** 프로젝트 리소스를 호스팅하여 보안과 격리를 보장하는 사설 네트워크입니다.
    - **AWS CloudWatch:** CloudWatch는 AWS 리소스 및 애플리케이션 모니터링에 필수적이며, 로그, 메트릭, 이벤트를 집계하여 종합적인 데이터 시각화를 제공합니다. 
    - **Elastic Kubernetes Service(EKS):** 컨테이너화된 애플리케이션을 실행하고 확장하기 위한 관리형 Kubernetes 서비스입니다.
-   - **Relational Database Service(RDS) for MySQL:** 스토리지 요구 사항을 충족하는 관리형 관계형 데이터베이스 서비스입니다.
    - **Elastic Container Registry(ECR):** 컨테이너 이미지를 저장하고 관리하는 Docker 컨테이너 레지스트리입니다.
    - **Identity and Access Management(IAM):** AWS 서비스에 안전하게 액세스하기 위한 역할과 정책을 설정합니다.
    - **Elastic Load Balancer(ELB):** 수신 애플리케이션 트래픽을 여러 가용 영역의 EC2 인스턴스와 같은 여러 대상에 분산합니다.
@@ -71,7 +70,7 @@
 4. **웹 프레임워크:** FastAPI
 5. **컨테이너화:** Docker
 6. **컨테이너 오케스트레이션:** Kubernetes
-7. **데이터베이스:** Amazon RDS (MySQL)
+7. **데이터베이스:** Docker Cantainer MySQL 8.0
 8. **모니터링:** Prometheus
 9. **데이터 시각화:** Grafana
 10. **CI/CD:** Jenkins
