@@ -1,3 +1,6 @@
+from dotenv import load_dotenv
+load_dotenv()  # 이 코드가 .env 파일에서 환경 변수를 로드합니다.
+
 from fastapi import FastAPI, Depends, HTTPException
 from sqlalchemy.orm import Session
 from . import crud, models, schemas, database
