@@ -1,6 +1,6 @@
-fastapi==0.65.2
-uvicorn==0.14.0
+fastapi==0.65.1
+uvicorn==0.13.4
+sqlalchemy==1.4.15
 pydantic==1.8.2
-SQLAlchemy<1.4
-databases==0.4.3
-alembic==1.6.5
+python-dotenv==0.17.1
+mysql-connector-python==8.0.23
