@@ -10,7 +10,7 @@ load_dotenv()
 # RDS MySQL 연결 정보 업데이트
 DATABASE_URL = os.getenv("DATABASE_URL")
 
-engine = create_engine(DATABASE_URL, echo=True, future=True)
+engine = create_engine(DATABASE_URL, echo=True)  # future=True 제거
 SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
 
 Base = declarative_base()
