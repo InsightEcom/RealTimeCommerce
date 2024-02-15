@@ -1,0 +1,16 @@
+version: '3.8'
+services:
+  jenkins:
+    image: jenkins/jenkins:lts
+    ports:
+      - "8080:8080"  # Jenkins web interface
+      - "50000:50000"  # Jenkins agent port
+    volumes:
+      - jenkins-data:/var/jenkins_home  # Jenkins 데이터를 보존하기 위한 볼륨
+      - /var/run/docker.sock:/var/run/docker.sock  # 호스트의 Docker 데몬에 접근하기 위함
+    environment:
+      - JAVA_OPTS=-Djenkins.install.runSetupWizard=false  # 초기 설정 마법사 비활성화
+    restart: unless-stopped
+
+volumes:
+  jenkins-data:
