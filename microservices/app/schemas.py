@@ -14,4 +14,4 @@ class Transaction(TransactionBase):
     date: datetime  # 거래 일시
 
     class Config:
-        orm_mode = True
+        from_attributes = True
