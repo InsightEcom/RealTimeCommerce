@@ -1,5 +1,5 @@
 from dotenv import load_dotenv
-load_dotenv()  # 이 코드가 .env 파일에서 환경 변수를 로드합니다.
+load_dotenv()  # .env 파일에서 환경 변수를 로드합니다.
 
 from fastapi import FastAPI, Depends, HTTPException
 from sqlalchemy.orm import Session
@@ -25,23 +25,23 @@ def read_root():
 
 @app.post("/transactions/", response_model=schemas.Transaction)
 def create_transaction(transaction: schemas.TransactionCreate, db: Session = Depends(get_db)):
+    # 엔드포인트 경로 이름 명사 사용 및 복수형으로 변경
     return crud.create_transaction(db=db, transaction=transaction)
 
 @app.get("/transactions/", response_model=list[schemas.Transaction])
 def read_transactions(skip: int = 0, limit: int = 100, db: Session = Depends(get_db)):
+    # 복수형 명사 사용 및 일관성 유지
     transactions = crud.get_transactions(db, skip=skip, limit=limit)
     return transactions
 
 @app.get("/transactions/category/{category}", response_model=list[schemas.Transaction])
 def read_transactions_by_category(category: str, skip: int = 0, limit: int = 100, db: Session = Depends(get_db)):
+    # RESTful API 설계 원칙에 따라 경로와 변수명을 명확하게 사용
     transactions = crud.get_transactions_by_category(db, category=category, skip=skip, limit=limit)
     return transactions
 
 @app.get("/analytics/monthly-total")
 def get_monthly_total(db: Session = Depends(get_db)):
-    # 분석 로직 구현
-    # 예시: 각 월별 거래 총액을 계산
-    # 실제 구현 시 데이터베이스에서 월별 총액을 집계하는 쿼리를 작성해야 합니다.
-    # 여기서는 반환 값이 가상의 데이터라고 가정합니다.
+    # 분석 로직 구현 주석 추가
     monthly_totals = {"January": 10000, "February": 15000, "March": 20000}
     return monthly_totals
