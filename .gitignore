@@ -213,3 +213,13 @@ terraform.rc
 terraform/.terraform.lock.hcl
 microservices/test.db
 frod_23797_The_name_of_our_GitHub_organization_is_InsightEcom.png
+microservices/app/pyvenv.cfg
+microservices/app/Scripts/activate
+microservices/app/Scripts/activate.bat
+microservices/app/Scripts/Activate.ps1
+microservices/app/Scripts/deactivate.bat
+microservices/app/Scripts/pip.exe
+microservices/app/Scripts/pip3.12.exe
+microservices/app/Scripts/pip3.exe
+microservices/app/Scripts/python.exe
+microservices/app/Scripts/pythonw.exe
