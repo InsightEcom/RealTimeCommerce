@@ -14,4 +14,19 @@ class Transaction(TransactionBase):
     date: datetime  # 거래 일시
 
     class Config:
-        from_attributes = True
+        orm_mode = True
+
+# 사용자 생성을 위한 기본 스키마
+class UserCreate(BaseModel):
+    username: str
+    email: str
+    password: str
+
+# 사용자 생성 후 응답을 위한 스키마
+class UserCreateResponse(BaseModel):
+    id: int
+    username: str
+    email: str
+
+    class Config:
+        orm_mode = True
