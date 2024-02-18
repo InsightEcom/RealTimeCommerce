@@ -1,0 +1,30 @@
+version: '3.8'
+
+services:
+  app:
+    build: .
+    command: uvicorn app.main:app --host 0.0.0.0 --reload
+    volumes:
+      - .:/app
+    ports:
+      - "8000:8000"
+    depends_on:
+      - mysql
+  mysql:
+    image: mysql:8
+    container_name: mysql8
+    environment:
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}  # .env 파일에서 "MYSQL_ROOT_PASSWORD=my-secret-pw" 설정 사용
+      MYSQL_DATABASE: ${MYSQL_DATABASE}  # 데이터베이스 이름 설정, .env 파일에 추가
+      MYSQL_USER: ${MYSQL_USER}  # 사용자 이름 설정, .env 파일에 추가
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD}  # 사용자 비밀번호 설정, .env 파일에 추가
+    ports:
+      - "3306:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
+    command: --default-authentication-plugin=mysql_native_password  # MySQL 8.0의 기본 인증 플러그인 설정
+    restart: always
+
+volumes:
+  mysql_data:
+    name: mysql_data
